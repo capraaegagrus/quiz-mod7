@@ -1,0 +1,7 @@
+
+<h3>Creditos del juego <%= title %></h3>
+<p> Autor: Capra Aegagrus</p>
+ <img src="images/Capra_hircus_pequena.jpg" alt="Capra" height="402" width="600"> 
+<p> Datos:  es un mamífero artiodáctilo de la subfamilia Caprinae que fue domesticado alrededor del octavo milenio a. C., sobre todo por su carne y leche </p>
+<p> Otras aficiones: Curiosea en las tecnologías web, como NodeJS</p>
+
