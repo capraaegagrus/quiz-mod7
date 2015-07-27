@@ -4,3 +4,4 @@ npm-debub.log
 npm-debug.log
 quiz.sqlite
 public/media 
+.env
