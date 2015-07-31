@@ -8,13 +8,17 @@ router.get('/', function(req, res) {
 });
 
 //Autoload con :quizId
-router.param('quizId', quizControler.load);
+router.param('quizId', quizController.load);
+
+
 
 //Rutas de /quizes
 router.get('/quizes',                       quizController.index);
-//Rura para a lista
+//Ruta para a lista
 router.get ('/quizes/:quizId(\\d+)',        quizController.show);
 router.get ('/quizes/:quizId(\\d+)/answer', quizController.answer);
+//Ruta para a lista con busqueda por palabras
+//router.get ('/quizes/:search(\\w+)',        quizController.search);
 
 
 //router.get('/quizes/question', quizController.question);

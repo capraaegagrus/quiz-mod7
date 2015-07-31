@@ -3,6 +3,7 @@ var models = require('../models/models.js');
 
 //Autoload
 exports.load = function (req, res, next, quizId){
+  console.log('quizId:'+quizId);
   models.Quiz.find(
     quizId).then(
       function(quiz) {
@@ -19,13 +20,27 @@ exports.load = function (req, res, next, quizId){
   
 };
 
+
+
+
 // GET /quizes
 exports.index = function (req, res) {
-  models.Quiz.findAll().then(
-    function(quizes){
-      res.render('quizes/index',{quizes: quizes});
-    }
-  ).catch(function(error) {next (error);})
+  //Comprobo si teño o parámetro search
+  if (req.query.search!=undefined) {
+    //Reemplazo espacios por % para a busqueda
+    cadena=req.query.search.replace(' ', '%');
+    models.Quiz.findAll({where: ["pregunta like ?","%"+cadena+'%']}).then(
+      function(quizes){
+        res.render('quizes/index',{quizes: quizes});
+      }
+    ).catch(function(error) {next (error);})
+  } else {
+    models.Quiz.findAll().then(
+      function(quizes){
+        res.render('quizes/index',{quizes: quizes});
+      }
+    ).catch(function(error) {next (error);})
+  }
 };
 
 // GET /quizes/:id
@@ -45,6 +60,10 @@ exports.answer = function(req, res) {
       res.render('quizes/answer',
           {quiz:req.quiz, respuesta:resultado});
 };
+
+
+
+
 
 
 

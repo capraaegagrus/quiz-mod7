@@ -10,15 +10,16 @@ router.get('/', function(req, res) {
 //Autoload con :quizId
 router.param('quizId', quizController.load);
 
+
+
 //Rutas de /quizes
 router.get('/quizes',                       quizController.index);
-//Rura para a lista
+//Ruta para a lista
 router.get ('/quizes/:quizId(\\d+)',        quizController.show);
 router.get ('/quizes/:quizId(\\d+)/answer', quizController.answer);
 
 
-//router.get('/quizes/question', quizController.question);
-//router.get ('/quizes/answer', quizController.answer);
+
 //Ruta para os creditos
 router.get ('/author', function(req,res){
   res.render('author', { title:'Quiz'});

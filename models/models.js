@@ -38,13 +38,13 @@ exports.Quiz = Quiz;
 sequelize.sync().then (function(){
   //success(..) Executa o manexador cada vez creada a táboa
   Quiz.count().then(function (count){
-if(count === 0) { // la tabla se inicializa solo si está vacía
-Quiz.bulkCreate(
-[ {pregunta: 'Capital de Italia', respuesta: 'Roma'},
-{pregunta: 'Capital de Portugal', respuesta: 'Lisboa'}
-]
-).then(function(){console.log('Base de datos inicializada')});
-    };
+	if(count === 0) { // la tabla se inicializa solo si está vacía
+	  Quiz.bulkCreate(
+	    [ {pregunta: 'Capital de Italia', respuesta: 'Roma'},
+	      {pregunta: 'Capital de Portugal', respuesta: 'Lisboa'}
+	    ]
+	  ).then(function(){console.log('Base de datos inicializada')});
+	 };
   });
 });
 
