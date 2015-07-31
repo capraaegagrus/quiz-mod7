@@ -10,6 +10,7 @@ var pwd     = (url[3]||null);
 var protocol= (url[1]||null);
 var dialect = (url[1]||null);
 var port    = (url[5]||null);
+var host    = (url[4]||null);
 var storage = process.env.DATABASE_STORAGE;
 
 //Cargar modelo ORM
@@ -34,13 +35,15 @@ var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 exports.Quiz = Quiz;
 
 //sequelize.sync() crea e inicializa a táboa de preguntas na DB
-sequelize.sync().success(function(){
+sequelize.sync().then (function(){
   //success(..) Executa o manexador cada vez creada a táboa
   Quiz.count().success(function (count){
     if (count===0){ //A táboa se inicializa só si está valeira
       Quiz.create({pregunta:'Capital de Italia',
-		   respuesta: 'Roma'})
-      .success (function() { console.log ('Base de datos inicializada')});
+		   respuesta: 'Roma'});
+      Quiz.create({pregunta:'Capital de Portugal',
+		   respuesta: 'Lisboa'})
+      .then (function() { console.log ('Base de datos inicializada')});
     };
   });
 });

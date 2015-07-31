@@ -1,0 +1,9 @@
+
+<h3>Busca <%= title %></h3>
+
+
+<form method="get" action="/quizes">
+<p>Introduce el termino de búsqueda  </p>
+<input type="text" name="search" value="Responda aquí"/>
+<input type="submit" value="Enviar">
+</form>
